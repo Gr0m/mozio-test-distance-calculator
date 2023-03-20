@@ -14,8 +14,11 @@ const MainBackground = () => {
         position: 'absolute',
         width: '100%',
         height: '100%',
-        objectFit: 'contain',
-        zIndex: -10
+        objectFit: 'cover',
+        zIndex: -10,
+        '@media screen and (min-width: 786px)': {
+          objectFit: 'contain',
+        }
       })}
     />
   );

@@ -78,7 +78,7 @@ export default function Page() {
       <Grid>
         <Row>
           <Column>
-            <Route length={3} data={destinations} />
+            <Route length={destinations.length} data={destinations} />
           </Column>
         </Row>
         <Row>
