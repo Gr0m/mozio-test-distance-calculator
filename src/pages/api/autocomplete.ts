@@ -20,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Cities
         );
         res.status(200).json(filteredCities);
       }
-    }, 2000);
+    }, 1986);
   } else {
     res.status(405).end(`Method ${method} Not Allowed`);
   }

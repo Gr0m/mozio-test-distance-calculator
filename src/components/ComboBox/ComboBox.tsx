@@ -6,7 +6,7 @@ import {
 } from '@components/ComboBox/ComboBox.styles';
 import React, { ChangeEvent, useCallback, useId, useRef, useState } from 'react';
 import Input from '@components/UI/Input/Input';
-import Label from '@components/UI/Label/Label';
+import Text from '@components/UI/Texts/Texts';
 import Dropdown from '@components/UI/Dropdown/Dropdown';
 import DropdownSkeleton from '@components/UI/Dropdown/DropdownSkeleton';
 import DropdownOption from '@components/UI/Dropdown/DropdownOption';
@@ -49,7 +49,6 @@ const ComboBox = ({
 
   const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    console.log(value);
 
     onChange(value);
     setAutocompleteOptionSelected(false);
@@ -147,7 +146,7 @@ const ComboBox = ({
 
   return (
     <ComboBoxContainer ref={comboBoxRef}>
-      <Label htmlFor={`input-${id}`}>{label}</Label>
+      <Text $as="label" htmlFor={`input-${id}`}>{label}</Text>
       <Input
         ref={inputRef}
         value={value}

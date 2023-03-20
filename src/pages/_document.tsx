@@ -29,7 +29,7 @@ export default class MyDocument extends Document<{ stylesheets: Sheet[] }> {
 
   render() {
     return (
-      <Html>
+      <Html lang="en-US">
         <Head>
           {this.props.stylesheets.map((sheet, i) => (
             <style

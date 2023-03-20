@@ -14,7 +14,8 @@ const theme = {
   transitions: {
     fast: '186ms'
   },
-  dateFormat: 'MM/dd/yyyy',
+  dateFormat: 'MM/DD/YYYY',
+  alternativeDateFormat: 'MMM DD, YYYY',
 };
 
 export default theme;

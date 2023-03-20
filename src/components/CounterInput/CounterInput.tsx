@@ -1,4 +1,4 @@
-import Label from '@components/UI/Label/Label';
+import Text from '@components/UI/Texts/Texts';
 import { PositionedErrorMessage } from '@components/ComboBox/ComboBox.styles';
 import {
   AdjustedInput,
@@ -50,7 +50,7 @@ const CounterInput = ({ label, value = 0, max, onChange, error }: Props) => {
 
   return (
     <CounterInputContainer>
-      <Label htmlFor={`counter-input-${id}`}>{label}</Label>
+      <Text $as="label" htmlFor={`counter-input-${id}`}>{label}</Text>
       <AdjustedInput
         ref={inputRef}
         type="number"

@@ -1,11 +1,11 @@
 import { DatepickerInputContainer } from '@components/DatepickerInput/DatepickerInput.styles';
-import Label from '@components/UI/Label/Label';
+import Text from '@components/UI/Texts/Texts';
 import Input from '@components/UI/Input/Input';
 import React, { useEffect, useId, useRef, useState } from 'react';
 import Dropdown from '@components/UI/Dropdown/Dropdown';
 import Datepicker from '@components/UI/Datepicker/Datepicker';
-import { formatDate } from 'baseui/datepicker';
 import theme from '@themes/default';
+import dayjs from 'dayjs';
 
 interface Props {
   label: string;
@@ -19,7 +19,7 @@ const DatepickerInput = ({ label, value, onChange }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [datepickerVisible, setDatepickerVisibility] = useState<boolean>(false);
   const datepickerChangeHandler = (date: Date) => {
-    const newDate = formatDate(date, theme.dateFormat) as string;
+    const newDate = dayjs(date, theme.dateFormat).format(theme.dateFormat);
     onChange(newDate);
 
     setDatepickerVisibility(false);
@@ -60,7 +60,7 @@ const DatepickerInput = ({ label, value, onChange }: Props) => {
 
   return (
     <DatepickerInputContainer>
-      <Label htmlFor={`datepicker-input-${id}`}>{label}</Label>
+      <Text $as="label" htmlFor={`datepicker-input-${id}`}>{label}</Text>
       <Input
         ref={inputRef}
         value={value}

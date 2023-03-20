@@ -1,6 +1,6 @@
 const endpoints = {
   autocomplete: '/api/autocomplete',
-  calculateDistance: '/api/calculate-distance',
+  destinations: '/api/destinations',
 }
 
 export default endpoints;

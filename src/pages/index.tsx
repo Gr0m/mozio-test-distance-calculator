@@ -9,19 +9,16 @@ import Route from '@components/Route/Route';
 import Button from '@components/UI/Button/Button';
 import CounterInput from '@components/CounterInput/CounterInput';
 import DatepickerInput from '@components/DatepickerInput/DatepickerInput';
-import { formatDate } from 'baseui/datepicker';
 import theme from '@themes/default';
 import CrossButton from '@components/UI/CrossButton/CrossButton';
 import TextButton from '@components/UI/TextButton/TextButton';
-
-interface InputsData<T = string> {
-  label: string;
-  value: T;
-  touched: boolean;
-  error?: string;
-}
+import { useRouter } from 'next/router';
+import { InputsData } from '@dataTypes/types';
+import createQueryString from '../utilitites/createQueryString';
+import dayjs from 'dayjs';
 
 export default function Page() {
+  const router = useRouter();
   // State. Immer is used here to simplify state management.
 
   const [formValid, setFormValidity] = useState<boolean>(false);
@@ -45,7 +42,7 @@ export default function Page() {
     touched: false
   });
 
-  const today = formatDate(new Date(), theme.dateFormat) as string;
+  const today = dayjs().format(theme.dateFormat);
   const [date, setDate] = useImmer<InputsData>({
     label: 'Date',
     value: today,
@@ -109,9 +106,11 @@ export default function Page() {
     });
   };
 
-  // Simple form validation
+  // Simple form validation & query string generation
 
   useEffect(() => {
+    // Validate form on every change
+
     let valid = true;
 
     inputsData.forEach((data, index) => {
@@ -147,12 +146,17 @@ export default function Page() {
     }
 
     setFormValidity(valid);
+
+    // Generate query string on every change
   }, [inputsData, passengers, date]);
 
   // Submit handler
 
   const submitHandler = () => {
-    console.log('submit');
+    router.push({
+      pathname: '/results',
+      query: { ...createQueryString(inputsData, passengers, date) }
+    });
   };
 
   return (
@@ -160,7 +164,7 @@ export default function Page() {
       <Grid>
         <Row>
           <Column>
-            <Route length={inputsData.length} />
+            <Route length={inputsData.length} forInputs />
           </Column>
           <Column $grow $extraMarginRight>
             {inputsData.map((data, index) => (
