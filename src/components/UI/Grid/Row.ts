@@ -7,6 +7,7 @@ interface Props {
 const Row = styled('div', ({$extraMargin}: Props) => ({
   display: 'flex',
   justifyContent: 'center',
+  flexWrap: 'wrap',
   width: '100%',
   marginTop: $extraMargin ? '36px' : '20px',
   ':first-child': {

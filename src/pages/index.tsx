@@ -163,27 +163,39 @@ export default function Page() {
     <MainContainer>
       <Grid>
         <Row>
-          <Column>
-            <Route length={inputsData.length} forInputs />
-          </Column>
           <Column $grow $extraMarginRight>
-            {inputsData.map((data, index) => (
-              <Row key={index}>
-                <ComboBox
-                  label={data.label}
-                  value={data.value}
-                  onChange={(value) => inputChangeHandler(index, value)}
-                  onClear={() => inputClearHandler(index)}
-                  error={data.error}
-                  onError={(error) => inputErrorHandler(index, error)}
-                  removable={index > 1}
-                  onRemove={() => removeDestinationHandler(index)}
-                  autocomplete
-                />
-              </Row>
-            ))}
+            <Row>
+              <Column>
+                <Route length={inputsData.length} forInputs />
+              </Column>
+              <Column $grow>
+                {inputsData.map((data, index) => (
+                  <Row key={index}>
+                    <ComboBox
+                      label={data.label}
+                      value={data.value}
+                      onChange={(value) => inputChangeHandler(index, value)}
+                      onClear={() => inputClearHandler(index)}
+                      error={data.error}
+                      onError={(error) => inputErrorHandler(index, error)}
+                      removable={index > 1}
+                      onRemove={() => removeDestinationHandler(index)}
+                      autocomplete
+                    />
+                  </Row>
+                ))}
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <CrossButton onClick={addDestinationHandler}>Add destination</CrossButton>
+              </Column>
+              <Column $grow>
+                <TextButton onClick={addDestinationHandler}>Add destination</TextButton>
+              </Column>
+            </Row>
           </Column>
-          <Column>
+          <Column $mobileFullWidth>
             <Row>
               <CounterInput
                 label={passengers.label}
@@ -201,14 +213,6 @@ export default function Page() {
                 error={date.error}
               />
             </Row>
-          </Column>
-        </Row>
-        <Row>
-          <Column>
-            <CrossButton onClick={addDestinationHandler}>Add destination</CrossButton>
-          </Column>
-          <Column $grow>
-            <TextButton onClick={addDestinationHandler}>Add destination</TextButton>
           </Column>
         </Row>
         <Row $extraMargin>
