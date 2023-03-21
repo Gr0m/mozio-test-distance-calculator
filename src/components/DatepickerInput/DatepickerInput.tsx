@@ -71,7 +71,7 @@ const DatepickerInput = ({ label, value, onChange }: Props) => {
         readOnly
       />
       {datepickerVisible && (
-        <Dropdown>
+        <Dropdown $centerOnMobile>
           <Datepicker
             onChange={({ date }) => datepickerChangeHandler(date as Date)}
             initialState={{ value: new Date(value) }}
