@@ -4,7 +4,7 @@ import Row from '@components/UI/Grid/Row';
 import Column from '@components/UI/Grid/Column';
 import Route from '@components/Route/Route';
 import Button from '@components/UI/Button/Button';
-import { TextBold, TextCentered } from '@components/UI/Texts/Texts';
+import Text, { TextBold, TextCentered } from '@components/UI/Texts/Texts';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import theme from '@themes/default';
@@ -12,7 +12,6 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import endpoints from '@data/endpoints';
 import Loading from '@components/UI/Loading/Loading';
-import Text from '@components/UI/Texts/Texts';
 import { Destination } from '@dataTypes/types';
 
 export default function Page() {
